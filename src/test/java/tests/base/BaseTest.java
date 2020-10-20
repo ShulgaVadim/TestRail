@@ -9,6 +9,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import steps.LoginSteps;
 import utils.CapabilitiesGenerator;
 
 import java.util.concurrent.TimeUnit;
@@ -17,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Listeners(TestListener.class)
 public class BaseTest {
 
+    public LoginSteps loginSteps;
     WebDriver driver;
 
     @BeforeMethod(alwaysRun = true)
@@ -30,6 +32,7 @@ public class BaseTest {
         }
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        loginSteps = new LoginSteps(driver);
         context.setAttribute("driver", driver);
     }
 
