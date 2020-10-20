@@ -9,7 +9,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import pages.DashboardPage;
 import steps.LoginSteps;
 import utils.CapabilitiesGenerator;
 
@@ -18,9 +17,6 @@ import java.util.concurrent.TimeUnit;
 @Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
-
-    public final static String EMAIL = "stiffler88@bk.ru";
-    public final static String PASSWORD = "St5777758";
 
     public LoginSteps loginSteps;
     WebDriver driver;
