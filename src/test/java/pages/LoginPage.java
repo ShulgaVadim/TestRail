@@ -25,17 +25,17 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    @Step("Opening Login Page")
+    @Step("Open Login Page")
     public LoginPage openPage() {
-        log.info("Open Login page: " + URL);
+        log.info("Opening Login page: " + URL);
         driver.get(URL);
         isPageOpened();
         return this;
     }
 
-    @Step("Fill Email and Password fields and click Login")
-    public DashboardPage login(String username, String password){
-        driver.findElement(EMAIL_INPUT).sendKeys(username);
+    @Step("Login with Email '{email} and Password '{password}'")
+    public DashboardPage login(String email, String password){
+        driver.findElement(EMAIL_INPUT).sendKeys(email);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
         return new DashboardPage(driver);

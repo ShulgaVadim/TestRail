@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 @Log4j2
 public class DashboardPage extends BasePage{
 
-    public static final String URL = "https://aqa6shulga.testrail.io/index.php?/dashboard";
+    public static final String DASHBOARD_URL = URL + "/index.php?/dashboard";
     public static final By ADDPROJECT_BUTTON = By.id("sidebar-projects-add");
 
     public DashboardPage(WebDriver driver) {
@@ -22,9 +22,9 @@ public class DashboardPage extends BasePage{
         return this;
     }
 
-    @Step("Opening Dashboard Page")
+    @Step("Open Dashboard Page")
     public DashboardPage openPage() {
-        log.info("Open Dashboard page: " + URL);
+        log.info("Opening Dashboard page: " + URL);
         driver.get(URL);
         isPageOpened();
         return this;

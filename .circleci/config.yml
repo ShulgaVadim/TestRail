@@ -62,6 +62,6 @@ workflows:
           filters:
             branches:
               only:
-                - feature/base
+                - master
     jobs:
       - ui-tests
