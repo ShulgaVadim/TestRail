@@ -17,6 +17,7 @@
         <allure-testng.version>2.13.5</allure-testng.version>
         <lombok.version>1.18.12</lombok.version>
         <log4j-core.version>2.13.3</log4j-core.version>
+        <javafaker>1.0.2</javafaker>
     </properties>
 
     <build>
@@ -96,5 +97,13 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j-core.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker}</version>
+        </dependency>
+
     </dependencies>
 </project>
