@@ -40,15 +40,14 @@ public class ProjectSteps {
         return this;
     }
 
-    @Step("Create new project: '{projectName}'")
+    @Step("Delete project: '{projectName}'")
     public ProjectSteps deleteProject(String projectName){
         projectsPage
                 .openPage()
                 .isPageOpened()
                 .clickDeleteButton(projectName)
                 .isModalOpened()
-                .delete()
-                .isPageOpened();
+                .delete();
         return this;
     }
 
@@ -61,14 +60,4 @@ public class ProjectSteps {
         assertTrue(projectsPage.isProjectDeleted(projectName));
         return this;
     }
-    @Step("Edit Project '{projectName}'")
-    public ProjectSteps editProject(String projectName) {
-        log.info("Edit "  + projectName);
-        newProjectPage
-                .openPage()
-                .isPageOpened();
-        assertTrue(projectsPage.isProjectDeleted(projectName));
-        return this;
-    }
-
 }

@@ -11,8 +11,7 @@ public class ProjectTest extends BaseTest {
     @Test
     public void createProjectTest() {
         loginSteps
-                .login("stiffler88@bk.ru", "St5777758")
-                .isDashboardPageOpened();
+                .login(EMAIL, PASSWORD);
         projectSteps
                 .createNewProject(name, announcement)
                 .isProjectCreated(name);
@@ -21,8 +20,7 @@ public class ProjectTest extends BaseTest {
     @Test
     public void deleteProjectTest() {
         loginSteps
-                .login("stiffler88@bk.ru", "St5777758")
-                .isDashboardPageOpened();
+                .login(EMAIL, PASSWORD);
         projectSteps
                 .deleteProject(name)
                 .isProjectDeleted(name);

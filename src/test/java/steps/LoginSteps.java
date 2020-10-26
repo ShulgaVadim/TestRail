@@ -20,12 +20,14 @@ public class LoginSteps {
                 .openPage()
                 .isPageOpened()
                 .login(email, password);
+        dashboardPage
+                .isPageOpened();
         return this;
     }
+//
+//    @Step("Validation that Dashboard Page is opened")
+//    public LoginSteps isDashboardPageOpened() {
+//        dashboardPage.isPageOpened();
+//        return this;
 
-    @Step("Validation that Dashboard Page is opened")
-    public LoginSteps isDashboardPageOpened() {
-        dashboardPage.isPageOpened();
-        return this;
-    }
 }

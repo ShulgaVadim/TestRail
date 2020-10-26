@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import steps.LoginSteps;
 import steps.ProjectSteps;
+import steps.TestCasesSteps;
 import utils.CapabilitiesGenerator;
 
 import java.util.concurrent.TimeUnit;
@@ -20,12 +21,16 @@ import java.util.concurrent.TimeUnit;
 @Listeners(TestListener.class)
 public class BaseTest {
 
+    public static final String EMAIL = System.getenv("email");
+    public static final String PASSWORD = System.getenv("password");
+
     public LoginSteps loginSteps;
     public ProjectSteps projectSteps;
+    public TestCasesSteps testCasesSteps;
     public Faker faker = new Faker();
     WebDriver driver;
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeMethod
     public void setUp(ITestContext context) {
 
         try {
@@ -38,6 +43,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         loginSteps = new LoginSteps(driver);
         projectSteps = new ProjectSteps(driver);
+        testCasesSteps = new TestCasesSteps(driver);
         context.setAttribute("driver", driver);
     }
 
@@ -45,5 +51,4 @@ public class BaseTest {
     public void tearDown() {
         driver.quit();
     }
-
 }
