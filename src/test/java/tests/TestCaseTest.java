@@ -48,28 +48,14 @@ public class TestCaseTest extends BaseTest {
 
 
     @Test
-    public void createTestCaseTest() {
+    public void createEditDeleteTestCaseTest() {
         loginSteps
                 .login(EMAIL, PASSWORD);
         testCasesSteps
                 .createNewTestCase(testCase)
-                .isTestCaseCreated(title);
-    }
-
-    @Test(priority = 1)
-    public void editTestCaseTest() {
-        loginSteps
-                .login(EMAIL, PASSWORD);
-        testCasesSteps
+                .isTestCaseCreated(title)
                 .editTestCase(editedTestCase, title)
-                .isTestCaseEdited(editTitle, editedExpectedResult);
-    }
-
-    @Test(priority = 2)
-    public void deleteTestCaseTest() {
-        loginSteps
-                .login(EMAIL, PASSWORD);
-        testCasesSteps
+                .isTestCaseEdited(editTitle, editedExpectedResult)
                 .deleteTestCase(editTitle)
                 .isTestCaseDeleted(editTitle);
     }

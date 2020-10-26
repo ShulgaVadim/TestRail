@@ -20,7 +20,7 @@ public class Select {
 
     @Step("Select '{option}'" )
     public void select(String option) {
-        log.info("Select '{option}' in " + label);
+        log.info(String.format("Select option %s in %s", option, label));
         driver.findElement(By.xpath(String.format(labelLocator, label))).click();
         driver.findElement(By.xpath(String.format(optionLocator, option))).click();
     }

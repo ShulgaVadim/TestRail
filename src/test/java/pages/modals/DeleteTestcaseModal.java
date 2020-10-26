@@ -18,7 +18,7 @@ public class DeleteTestcaseModal {
         wait = new WebDriverWait(driver, 20);
     }
 
-    @Step("Validate that Delete TestCase window is opened")
+    @Step("Validate that Delete Test сase window is opened")
     public DeleteTestcaseModal isModalOpened() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(OK_BUTTON));
         return this;

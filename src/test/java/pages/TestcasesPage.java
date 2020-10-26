@@ -29,27 +29,27 @@ public class TestcasesPage extends BasePage {
         super(driver);
     }
 
-    @Step("Open TestСases Page")
+    @Step("Open Test cases Page")
     public TestcasesPage openPage() {
-        log.info("Opening TestСases page: " + TESTCASE_URL);
+        log.info("Opening Test cases page: " + TESTCASE_URL);
         driver.get(TESTCASE_URL);
         isPageOpened();
         return this;
     }
 
-    @Step("Validation that Testcase Page is opened")
+    @Step("Validation that Test cases Page is opened")
     public TestcasesPage isPageOpened() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ADD_TESTCASE_BUTTON));
         return this;
     }
 
-    @Step("Click Add TestСase Button")
+    @Step("Click 'Add Test case' Button")
     public AddTestcasePage clickAddTestcase(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_TESTCASE_BUTTON)).click();
         return new AddTestcasePage(driver);
     }
 
-    @Step("Validate that TestCase '{testCaseName}' is created")
+    @Step("Validate that Test case '{testCaseName}' is created")
     public boolean isTestCaseCreated(String testCaseName) {
         boolean isCreated = false;
         if (
@@ -65,17 +65,17 @@ public class TestcasesPage extends BasePage {
         return this;
     }
 
-    @Step("Click Delete TestCase button")
+    @Step("Click 'Delete Test Case' button")
     public DeleteTestcaseModal clickDeleteTestcase(){
         driver.findElement(DELETE_TESTCASE_BUTTON).click();
         return new DeleteTestcaseModal(driver);
     }
 
-    @Step("Validation that project '{testCaseName}' is deleted")
+    @Step("Validation that Test Case '{testCaseName}' is deleted")
     public boolean isTestCaseDeleted(String testCaseName) {
         boolean isDeleted = true;
         testCases = driver.findElements(TESTCASES_XPATH);
-        log.info("Validate that TestCase " + testCaseName + "is deleted");
+        log.info("Validate that Test Case " + testCaseName + "is deleted");
         for (int i = 0; i < testCases.size(); i++) {
             if (testCases.get(i).getText().equals(testCaseName)) {
                 isDeleted = false;
@@ -98,9 +98,9 @@ public class TestcasesPage extends BasePage {
         return driver.findElement(By.xpath(String.format(textareaLocator, textarea))).getText();
     }
 
-    @Step("Validate that TestCase '{editCaseName}' is edited")
+    @Step("Validate that Test case '{editedTestCaseName}' is edited")
     public TestcasesPage isTestCaseEdited(String editedTestCaseName, String editedExpectedResult) {
-        log.info("Validate that TestCase " + editedTestCaseName + "is edited");
+        log.info("Validate that Test case " + editedTestCaseName + "is edited");
         String editTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".page_title"))).getText();
         assertEquals(editTitle, editedTestCaseName);
         assertEquals(getTextfromTextarea("Expected Result"), editedExpectedResult);

@@ -19,7 +19,7 @@ public class AddTestcasePage extends BasePage{
         super(driver);
     }
 
-    @Step("Create new TestCase")
+    @Step("Create new Test сase")
     public AddTestcasePage createNewTestCase(Testcase testCase) {
         new Input(driver, "Title").write(testCase.getTitle());
         new Select(driver, "Section").select(testCase.getSections());
@@ -39,13 +39,13 @@ public class AddTestcasePage extends BasePage{
         return this;
     }
 
-    @Step("Validation that AddTestcase Page is opened")
+    @Step("Validation that Add Test case Page is opened")
     public AddTestcasePage isPageOpened() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_TESTCASE_BUTTON));
         return this;
     }
 
-    @Step("Click Add Testcase Button")
+    @Step("Click 'Add Test case' Button")
     public TestcasesPage clickAddTestcase(){
         driver.findElement(ADD_TESTCASE_BUTTON).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(allertMessage)));

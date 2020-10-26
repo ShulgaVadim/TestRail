@@ -20,9 +20,9 @@ public class TestCasesSteps {
         addTestcasePage = new AddTestcasePage(driver);
     }
 
-    @Step("Create new Testcase: '{testcase}'")
+    @Step("Create new Test case: '{testcase}'")
     public TestCasesSteps createNewTestCase(Testcase testcase){
-        log.info("Create new Testcase " + testcase);
+        log.info("Create new Test case " + testcase);
         testcasesPage
                 .openPage()
                 .isPageOpened()
@@ -33,9 +33,9 @@ public class TestCasesSteps {
         return this;
     }
 
-    @Step("Validation that TestCase '{testCaseName}' is created")
+    @Step("Validation that Test case '{testCaseName}' is created")
     public TestCasesSteps isTestCaseCreated(String testCaseName) {
-        log.info("Validation that TestCase "  + testCaseName + " is created");
+        log.info("Validation that Test case "  + testCaseName + " is created");
         testcasesPage
                 .openPage()
                 .isPageOpened();
@@ -43,9 +43,9 @@ public class TestCasesSteps {
         return this;
     }
 
-    @Step("Delete TestCase: '{testCaseName}'")
+    @Step("Delete Test case: '{testCaseName}'")
     public TestCasesSteps deleteTestCase(String testCaseName){
-        log.info("Deleting TestCase: "  + testCaseName);
+        log.info("Deleting Test case: "  + testCaseName);
         testcasesPage
                 .openPage()
                 .isPageOpened()
@@ -56,9 +56,9 @@ public class TestCasesSteps {
         return this;
     }
 
-    @Step("Validation that TestCase '{testCaseName}' is deleted")
+    @Step("Validation that Test case '{testCaseName}' is deleted")
     public TestCasesSteps isTestCaseDeleted(String testCaseName) {
-        log.info("Validation that testCase " + testCaseName + " is deleted");
+        log.info("Validation that Test case " + testCaseName + " is deleted");
         testcasesPage
                 .openPage()
                 .isPageOpened();
@@ -66,9 +66,9 @@ public class TestCasesSteps {
         return this;
     }
 
-    @Step("Delete TestCase: '{testCaseName}'")
+    @Step("Edit Test case: '{testCaseName}'")
     public TestCasesSteps editTestCase(Testcase editTestCase, String testCaseName){
-        log.info("Editing TestCase: "  + editTestCase);
+        log.info("Editing Test case: "  + editTestCase);
         testcasesPage
                 .openPage()
                 .isPageOpened()
@@ -79,7 +79,7 @@ public class TestCasesSteps {
         return this;
     }
 
-    @Step("Validate that TestCase '{editCaseName}' is edited")
+    @Step("Validate that Test case '{editedTestCaseName}' is edited")
     public TestCasesSteps isTestCaseEdited(String editedTestCaseName, String editedExpectedResult) {
         testcasesPage
                 .isTestCaseEdited(editedTestCaseName, editedExpectedResult);
