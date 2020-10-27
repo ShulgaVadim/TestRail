@@ -20,6 +20,8 @@ public class MilestonesPage extends BasePage {
     public static final By MILESTONES_XPATH = By.cssSelector(".summary-title");
     String editMilestoneLocator = "//a[text()='%s']/parent::div//span//span[2]/following-sibling::a/div";
     String milestoneNameLocator = "//div[@class='summary-title summary-title-compact text-ppp']/a[text()='%s']";
+    private static final By EXPECTED_NAME = By.cssSelector(".page_title");
+    private static final By EXPECTED_DESCRIPTION = By.xpath ("//div[@class='markdown']");
     List<WebElement> milestones;
 
     public MilestonesPage(WebDriver driver) {
@@ -70,8 +72,8 @@ public class MilestonesPage extends BasePage {
     public MilestonesPage isMilestoneEdited(String editedMilestoneName, String editDescription)  {
         log.info("Validation that Milestone " + editedMilestoneName + "is edited");
         driver.findElement(By.xpath(String.format(milestoneNameLocator, editedMilestoneName))).click();
-        String expectedName = driver.findElement(By.cssSelector(".page_title")).getText();
-        String expectedDescription = driver.findElement(By.xpath ("//div[@class='markdown']")).getText();
+        String expectedName = driver.findElement(EXPECTED_NAME).getText();
+        String expectedDescription = driver.findElement(EXPECTED_DESCRIPTION).getText();
         assertEquals(editedMilestoneName, expectedName);
         assertEquals(editDescription, expectedDescription);
         return this;
