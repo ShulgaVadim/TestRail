@@ -20,7 +20,7 @@ public class TestCaseTest extends BaseTest {
 
     Testcase testCase = Testcase.builder()
             .title(title)
-            .sections("Test Cases")
+            .sections("TestCases")
             .template("Test Case (Text)")
             .type("Functional")
             .priority("High")
@@ -34,7 +34,7 @@ public class TestCaseTest extends BaseTest {
 
     Testcase editedTestCase = Testcase.builder()
             .title(editTitle)
-            .sections("Test Cases")
+            .sections("TestCases")
             .template("Test Case (Text)")
             .type("Destructive")
             .priority("Medium")
@@ -45,7 +45,6 @@ public class TestCaseTest extends BaseTest {
             .steps(editedSteps)
             .expectedResult(editedExpectedResult)
             .build();
-
 
     @Test
     public void createEditDeleteTestCaseTest() {
