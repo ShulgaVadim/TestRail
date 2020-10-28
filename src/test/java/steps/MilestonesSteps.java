@@ -77,7 +77,7 @@ public class MilestonesSteps {
         return this;
     }
 
-    @Step("Validation that Milestone '{milestoneName}' is deleted")
+    @Step("Validation that Milestone '{editMilestoneName}' is deleted")
     public MilestonesSteps isMilestoneDeleted(String editMilestoneName) {
         log.info("Validation that Milestone " + editMilestoneName + " is deleted");
         milestonesPage

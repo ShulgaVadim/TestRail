@@ -10,10 +10,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import steps.LoginSteps;
-import steps.MilestonesSteps;
-import steps.ProjectSteps;
-import steps.TestCasesSteps;
+import steps.*;
 import utils.CapabilitiesGenerator;
 
 import java.util.concurrent.TimeUnit;
@@ -29,6 +26,7 @@ public class BaseTest {
     public ProjectSteps projectSteps;
     public TestCasesSteps testCasesSteps;
     public MilestonesSteps milestonesSteps;
+    public TestRunsSteps testRunsSteps;
     public Faker faker = new Faker();
     WebDriver driver;
 
@@ -47,6 +45,7 @@ public class BaseTest {
         projectSteps = new ProjectSteps(driver);
         testCasesSteps = new TestCasesSteps(driver);
         milestonesSteps = new MilestonesSteps(driver);
+        testRunsSteps = new TestRunsSteps(driver);
         context.setAttribute("driver", driver);
     }
 

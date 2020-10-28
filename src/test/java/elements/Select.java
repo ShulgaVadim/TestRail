@@ -10,8 +10,8 @@ public class Select {
 
     WebDriver driver;
     String label;
-    String labelLocator = "//label[contains(text(),'%s')]/ancestor::td/div";
-    String optionLocator = "//tbody//li[contains(.,'%s')]";
+    String labelLocator = "//label[contains(text(),'%s')]/parent::*//div[1]/a";
+    String optionLocator = "//li[contains(.,'%s')]";
 
     public Select(WebDriver driver, String label) {
         this.driver = driver;

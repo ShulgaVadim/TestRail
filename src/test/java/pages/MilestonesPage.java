@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class MilestonesPage extends BasePage {
 
-    public static final String MILESTONES_URL = URL + "/index.php?/milestones/overview/52";
+    public static final String MILESTONES_URL = URL + "/index.php?/milestones/overview/77";
     private static final By ADD_MILESTONES_BUTTON = By.id("navigation-milestones-add");
     public static final By MILESTONES_XPATH = By.cssSelector(".summary-title");
     String editMilestoneLocator = "//a[text()='%s']/parent::div//span//span[2]/following-sibling::a/div";
