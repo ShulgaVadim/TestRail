@@ -25,7 +25,7 @@ public class AddTestRunPage extends BasePage {
         return this;
     }
 
-    @Step("Create new Test сase")
+    @Step("Create new Test Run")
     public AddTestRunPage createNewTestRun(TestRun testrun) {
         new Input(driver, "Name").write(testrun.getName());
         new Select(driver, "Milestone").select(testrun.getMilestone());

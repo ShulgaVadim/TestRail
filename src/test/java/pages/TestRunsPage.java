@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class TestRunsPage extends BasePage {
 
-    public static final String TESTRUN_URL = URL + "/index.php?/runs/overview/52";
+    public static final String TESTRUN_URL = URL + "/index.php?/runs/overview/77";
     private static final By ADD_TESTRUN_BUTTON = By.id("navigation-runs-add");
     public static final By TESTRUNS_XPATH = By.cssSelector(".summary-title");
     String editTestRunLocator = "//a[text()='%s']/parent::div/span/a";
@@ -68,7 +68,7 @@ public class TestRunsPage extends BasePage {
         return new AddTestRunPage(driver);
     }
 
-    @Step("Validation that Test Run'{editedTestRunName}' is edited")
+    @Step("Validation that Test Run '{editedTestRunName}' is edited")
     public TestRunsPage isTestRunEdited(String editedTestRunName, String editDescription)  {
         log.info("Validation that Milestone " + editedTestRunName + "is edited");
         driver.findElement(By.xpath(String.format(testRunNameLocator, editedTestRunName))).click();

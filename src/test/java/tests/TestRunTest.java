@@ -18,7 +18,7 @@ public class TestRunTest extends BaseTest {
             .name(name)
             .references(references)
             .description(description)
-            .milestone("Version 2.0")
+            .milestone("jerome.mcclure")
             .assignTo("Vadim Shulga")
             .build();
 
@@ -26,7 +26,7 @@ public class TestRunTest extends BaseTest {
             .name(editedName)
             .references(editedReferences)
             .description(editedDescription)
-            .milestone("Nu Reinger")
+            .milestone("arnulfo.harber")
             .assignTo("Me")
             .build();
 
