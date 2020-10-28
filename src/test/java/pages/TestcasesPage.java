@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class TestcasesPage extends BasePage {
 
-    public static final String TESTCASE_URL = URL + "/index.php?/suites/view/77";
+    public static final String TESTCASE_URL = URL + "/index.php?/suites/view/63";
     private static final By ADD_TESTCASE_BUTTON = By.id("sidebar-cases-add");
     private static final By DELETE_TESTCASE_BUTTON = By.id("deleteCases");
     public static final By TESTCASES_XPATH = By.xpath("//table[@class='grid']//td[4]/a/span");

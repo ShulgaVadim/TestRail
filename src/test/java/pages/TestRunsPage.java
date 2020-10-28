@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -15,11 +14,11 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class TestRunsPage extends BasePage {
 
-    public static final String TESTRUN_URL = URL + "/index.php?/runs/overview/77";
+    public static final String TESTRUN_URL = URL + "/index.php?/runs/overview/63";
     private static final By ADD_TESTRUN_BUTTON = By.id("navigation-runs-add");
     public static final By TESTRUNS_XPATH = By.cssSelector(".summary-title");
-    String editTestRunLocator = "//a[text()='%s']/parent::div/span/a";
-    String testRunNameLocator = "//div[@class='summary-title summary-title-compact text-ppp']/a[text()='%s']";
+    String editTestRunLocator = "//a[text()='%s']/parent::div/following-sibling::div/a";
+    String testRunNameLocator = "//div[@class='summary-title text-ppp']/a[text()='%s']";
     private static final By EXPECTED_NAME = By.cssSelector(".page_title");
     private static final By EXPECTED_DESCRIPTION = By.xpath ("//div[@class='markdown']");
     List<WebElement> testruns;
@@ -60,11 +59,10 @@ public class TestRunsPage extends BasePage {
 
     @Step("Click 'Edit Test Run' Button")
     public AddTestRunPage clickEditTestRun(String testRunName) {
-        Actions builder = new Actions(driver);
-        WebElement testRunArea = driver.findElement(By.xpath(String.format(testRunNameLocator, testRunName)));
-        builder.moveToElement(testRunArea).build().perform();
-        WebElement editButton = driver.findElement(By.xpath(String.format(editTestRunLocator, testRunName)));
-        editButton.click();
+//        Actions builder = new Actions(driver);
+//        WebElement testRunArea = driver.findElement(By.xpath(String.format(testRunNameLocator, testRunName)));
+//        builder.moveToElement(testRunArea).build().perform();
+        driver.findElement(By.xpath(String.format(editTestRunLocator, testRunName))).click();
         return new AddTestRunPage(driver);
     }
 
