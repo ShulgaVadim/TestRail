@@ -15,8 +15,8 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class MilestonesPage extends BasePage {
 
-    public static final String MILESTONES_URL = URL + "/index.php?/milestones/overview/63";
-    private static final By ADD_MILESTONES_BUTTON = By.id("navigation-milestones-add");
+    public static final By EDIT = By.xpath("//a[contains(text(),'Edit')]");
+    private static final By ADD_MILESTONE_BUTTON = By.id("sidebar-milestones-add");
     public static final By MILESTONES_XPATH = By.cssSelector(".summary-title");
     String editMilestoneLocator = "//a[text()='%s']/parent::div//span//span[2]/following-sibling::a/div";
     String milestoneNameLocator = "//div[@class='summary-title summary-title-compact text-ppp']/a[text()='%s']";
@@ -28,23 +28,15 @@ public class MilestonesPage extends BasePage {
         super(driver);
     }
 
-    @Step("Open Milestones Page")
-    public MilestonesPage openPage() {
-        log.info("Open Milestones page: " + MILESTONES_URL);
-        driver.get(MILESTONES_URL);
-        isPageOpened();
-        return this;
-    }
-
     @Step("Validation that Milestones Page is opened")
     public MilestonesPage isPageOpened() {
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ADD_MILESTONES_BUTTON));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ADD_MILESTONE_BUTTON));
         return this;
     }
 
     @Step("Click 'Add Milestone' Button")
     public AddMilestonePage clickAddMilestone() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_MILESTONES_BUTTON)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_MILESTONE_BUTTON)).click();
         return new AddMilestonePage(driver);
     }
 
@@ -76,6 +68,12 @@ public class MilestonesPage extends BasePage {
         String expectedDescription = driver.findElement(EXPECTED_DESCRIPTION).getText();
         assertEquals(editedMilestoneName, expectedName);
         assertEquals(editDescription, expectedDescription);
+        return this;
+    }
+
+    @Step("Click 'Edit' Button")
+    public MilestonesPage clickEdit() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(EDIT)).click();
         return this;
     }
 

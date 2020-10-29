@@ -24,7 +24,6 @@ public class TestCasesSteps {
     public TestCasesSteps createNewTestCase(Testcase testcase){
         log.info("Create new Test case " + testcase);
         testcasesPage
-                .openPage()
                 .isPageOpened()
                 .clickAddTestcase();
         addTestcasePage
@@ -37,32 +36,8 @@ public class TestCasesSteps {
     public TestCasesSteps isTestCaseCreated(String testCaseName) {
         log.info("Validation that Test case "  + testCaseName + " is created");
         testcasesPage
-                .openPage()
-                .isPageOpened();
+            .clickTestCasesButton();
         assertTrue(testcasesPage.isTestCaseCreated(testCaseName));
-        return this;
-    }
-
-    @Step("Delete Test case: '{testCaseName}'")
-    public TestCasesSteps deleteTestCase(String testCaseName){
-        log.info("Deleting Test case: "  + testCaseName);
-        testcasesPage
-                .openPage()
-                .isPageOpened()
-                .checkTheCheckbox(testCaseName)
-                .clickDeleteTestcase()
-                .isModalOpened()
-                .delete();
-        return this;
-    }
-
-    @Step("Validation that Test case '{testCaseName}' is deleted")
-    public TestCasesSteps isTestCaseDeleted(String testCaseName) {
-        log.info("Validation that Test case " + testCaseName + " is deleted");
-        testcasesPage
-                .openPage()
-                .isPageOpened();
-        assertTrue(testcasesPage.isTestCaseDeleted(testCaseName));
         return this;
     }
 
@@ -70,8 +45,6 @@ public class TestCasesSteps {
     public TestCasesSteps editTestCase(Testcase editTestCase, String testCaseName){
         log.info("Editing Test case: "  + editTestCase);
         testcasesPage
-                .openPage()
-                .isPageOpened()
                 .openEditing(testCaseName);
         addTestcasePage
                 .createNewTestCase(editTestCase)
@@ -82,7 +55,28 @@ public class TestCasesSteps {
     @Step("Validate that Test case '{editedTestCaseName}' is edited")
     public TestCasesSteps isTestCaseEdited(String editedTestCaseName, String editedExpectedResult) {
         testcasesPage
-                .isTestCaseEdited(editedTestCaseName, editedExpectedResult);
+                 .isTestCaseEdited(editedTestCaseName, editedExpectedResult);
+        return this;
+    }
+
+    @Step("Delete Test case: '{testCaseName}'")
+    public TestCasesSteps deleteTestCase(String testCaseName){
+        log.info("Deleting Test case: "  + testCaseName);
+        testcasesPage
+                .clickTestCasesButton()
+                .isPageOpened()
+                .clickDelete(testCaseName)
+                .isModalOpened()
+                .delete();
+        return this;
+    }
+
+    @Step("Validation that Test case '{testCaseName}' is deleted")
+    public TestCasesSteps isTestCaseDeleted(String testCaseName) {
+        log.info("Validation that Test case " + testCaseName + " is deleted");
+        testcasesPage
+                .isPageOpened();
+        assertTrue(testcasesPage.isTestCaseDeleted(testCaseName));
         return this;
     }
 }

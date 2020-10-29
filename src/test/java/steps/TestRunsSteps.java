@@ -24,7 +24,6 @@ public class TestRunsSteps {
     public TestRunsSteps createNewTestRun(TestRun testRun) {
         log.info("Create new Test Run " + testRun);
         testRunsPage
-                .openPage()
                 .isPageOpened()
                 .clickAddTestRun();
         addTestRunPage
@@ -38,8 +37,7 @@ public class TestRunsSteps {
     public TestRunsSteps isTestRunCreated(String testRunName) {
         log.info("Validation that Test Run " + testRunName + " is created");
         testRunsPage
-                .openPage()
-                .isPageOpened();
+                .clickTestRunsButton();
         assertTrue(testRunsPage.isTestRunCreated(testRunName));
         return this;
     }
@@ -67,9 +65,7 @@ public class TestRunsSteps {
     public TestRunsSteps deleteTestRun(String editedTestRunName) {
         log.info("Delete Test Run: " + editedTestRunName);
         testRunsPage
-                .openPage()
-                .isPageOpened()
-                .clickEditTestRun(editedTestRunName);
+                .clickEdit();
         addTestRunPage
                 .clickDeleteTestRun()
                 .isModalOpened()
@@ -80,9 +76,6 @@ public class TestRunsSteps {
     @Step("Validation that Test Run '{editedTestRunName}' is deleted")
     public TestRunsSteps isTestRunDeleted(String editedTestRunName) {
         log.info("Validation that Test Run " + editedTestRunName + " is deleted");
-        testRunsPage
-                .openPage()
-                .isPageOpened();
         assertTrue(testRunsPage.isTestRunDeleted(editedTestRunName));
         return this;
     }

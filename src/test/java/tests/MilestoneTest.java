@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
 public class MilestoneTest extends BaseTest {
+    String projectName = faker.leagueOfLegends().champion();
+    String announcement = faker.leagueOfLegends().location();
 
     String name = faker.name().name();
     String references = faker.artist().name();
@@ -34,6 +36,9 @@ public class MilestoneTest extends BaseTest {
     public void createEditDeleteMilestoneTest() {
         loginSteps
                 .login(EMAIL, PASSWORD);
+        projectSteps
+                .createNewProject(projectName, announcement)
+                .openProject(projectName);
         milestonesSteps
                 .createNewMilestone(milestone)
                 .isMilestoneCreated(name)
@@ -41,5 +46,8 @@ public class MilestoneTest extends BaseTest {
                 .isMilestoneEdited(editedName, editedDescription)
                 .deleteMilestone(editedName)
                 .isMilestoneDeleted(editedName);
+        projectSteps
+                .deleteProject(projectName);
+
     }
 }

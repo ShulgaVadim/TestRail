@@ -6,6 +6,9 @@ import tests.base.BaseTest;
 
 public class TestCaseTest extends BaseTest {
 
+    String projectName = faker.leagueOfLegends().champion();
+    String announcement = faker.leagueOfLegends().location();
+
     String title = faker.name().title();
     String references = faker.address().streetAddress();
     String preconditions = faker.name().fullName();
@@ -20,7 +23,7 @@ public class TestCaseTest extends BaseTest {
 
     Testcase testCase = Testcase.builder()
             .title(title)
-            .sections("TestCases")
+            .sections("Test Cases")
             .template("Test Case (Text)")
             .type("Functional")
             .priority("High")
@@ -34,7 +37,7 @@ public class TestCaseTest extends BaseTest {
 
     Testcase editedTestCase = Testcase.builder()
             .title(editTitle)
-            .sections("TestCases")
+            .sections("Test Cases")
             .template("Test Case (Text)")
             .type("Destructive")
             .priority("Medium")
@@ -50,6 +53,9 @@ public class TestCaseTest extends BaseTest {
     public void createEditDeleteTestCaseTest() {
         loginSteps
                 .login(EMAIL, PASSWORD);
+        projectSteps
+                .createNewProject(projectName, announcement)
+                .openProject(projectName);
         testCasesSteps
                 .createNewTestCase(testCase)
                 .isTestCaseCreated(title)
@@ -57,5 +63,7 @@ public class TestCaseTest extends BaseTest {
                 .isTestCaseEdited(editTitle, editedExpectedResult)
                 .deleteTestCase(editTitle)
                 .isTestCaseDeleted(editTitle);
+        projectSteps
+                .deleteProject(projectName);
     }
 }

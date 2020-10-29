@@ -6,6 +6,9 @@ import tests.base.BaseTest;
 
 public class TestRunTest extends BaseTest {
 
+    String projectName = faker.leagueOfLegends().champion();
+    String announcement = faker.leagueOfLegends().location();
+
     String name = faker.name().name();
     String references = faker.artist().name();
     String description = faker.chuckNorris().fact();
@@ -18,7 +21,6 @@ public class TestRunTest extends BaseTest {
             .name(name)
             .references(references)
             .description(description)
-            .milestone("Version 1.0")
             .assignTo("Vadim Shulga")
             .build();
 
@@ -26,7 +28,6 @@ public class TestRunTest extends BaseTest {
             .name(editedName)
             .references(editedReferences)
             .description(editedDescription)
-            .milestone("Version 2.0")
             .assignTo("Me")
             .build();
 
@@ -34,6 +35,9 @@ public class TestRunTest extends BaseTest {
     public void createEditDeleteTestRunTest() {
         loginSteps
                 .login(EMAIL, PASSWORD);
+        projectSteps
+                .createNewProject(projectName, announcement)
+                .openProject(projectName);
         testRunsSteps
                 .createNewTestRun(testRun)
                 .isTestRunCreated(name)
@@ -41,5 +45,7 @@ public class TestRunTest extends BaseTest {
                 .isTestRunEdited(editedName, editedDescription)
                 .deleteTestRun(editedName)
                 .isTestRunDeleted(editedName);
+        projectSteps
+                .deleteProject(projectName);
     }
 }

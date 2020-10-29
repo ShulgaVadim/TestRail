@@ -11,7 +11,7 @@ public class Select {
     WebDriver driver;
     String label;
     String labelLocator = "//label[contains(text(),'%s')]/parent::*//div[1]/a";
-    String optionLocator = "//li[contains(.,'%s')]";
+    String optionLocator = "//div[@class='chzn-drop']//li[contains(.,'%s')]";
 
     public Select(WebDriver driver, String label) {
         this.driver = driver;

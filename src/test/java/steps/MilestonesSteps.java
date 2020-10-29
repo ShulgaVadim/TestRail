@@ -24,7 +24,6 @@ public class MilestonesSteps {
     public MilestonesSteps createNewMilestone(Milestone milestone) {
         log.info("Create new Milestone " + milestone);
         milestonesPage
-                .openPage()
                 .isPageOpened()
                 .clickAddMilestone();
         addMilestonePage
@@ -37,9 +36,6 @@ public class MilestonesSteps {
     @Step("Validation that Milestone '{milestoneName}' is created")
     public MilestonesSteps isMilestoneCreated(String milestoneName) {
         log.info("Validation that Milestone " + milestoneName + " is created");
-        milestonesPage
-                .openPage()
-                .isPageOpened();
         assertTrue(milestonesPage.isMilestoneCreated(milestoneName));
         return this;
     }
@@ -67,9 +63,7 @@ public class MilestonesSteps {
     public MilestonesSteps deleteMilestone(String editMilestoneName) {
         log.info("Delete Milestone: " + editMilestoneName);
         milestonesPage
-                .openPage()
-                .isPageOpened()
-                .clickEditMilestone(editMilestoneName);
+                .clickEdit();
         addMilestonePage
                 .clickDeleteMilestone()
                 .isModalOpened()
@@ -80,9 +74,6 @@ public class MilestonesSteps {
     @Step("Validation that Milestone '{editMilestoneName}' is deleted")
     public MilestonesSteps isMilestoneDeleted(String editMilestoneName) {
         log.info("Validation that Milestone " + editMilestoneName + " is deleted");
-        milestonesPage
-                .openPage()
-                .isPageOpened();
         assertTrue(milestonesPage.isMilestoneDeleted(editMilestoneName));
         return this;
     }

@@ -18,9 +18,13 @@ import java.util.concurrent.TimeUnit;
 @Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
+//
+//    public static final String EMAIL = System.getenv("email");
+//    public static final String PASSWORD = System.getenv("password");
 
-    public static final String EMAIL = System.getenv("email");
-    public static final String PASSWORD = System.getenv("password");
+
+    public static final String EMAIL = "stiffler88@bk.ru";
+    public static final String PASSWORD = "St5777758";
 
     public LoginSteps loginSteps;
     public ProjectSteps projectSteps;
