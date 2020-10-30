@@ -39,13 +39,13 @@ public class AddTestcasePage extends BasePage{
         return this;
     }
 
-    @Step("Validation that Add Test case Page is opened")
+    @Step("Validation that Add Test Case Page is opened")
     public AddTestcasePage isPageOpened() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_TESTCASE_BUTTON));
         return this;
     }
 
-    @Step("Click 'Add Test case' Button")
+    @Step("Click 'Add Test Case' Button")
     public TestcasesPage clickAddTestcase(){
         driver.findElement(ADD_TESTCASE_BUTTON).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(allertMessage)));

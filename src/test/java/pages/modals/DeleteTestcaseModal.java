@@ -11,7 +11,6 @@ public class DeleteTestcaseModal {
     WebDriver driver;
     WebDriverWait wait;
     private static final By OK_BUTTON = By.xpath("//div[@id='deleteDialog']//a[contains(text(),'OK')]");
-    private static final By CONFIRM_DELETE = By.xpath("//div[@id='deleteDialog']//input[@name='deleteCheckbox']");
 
     public DeleteTestcaseModal(WebDriver driver) {
         this.driver = driver;
@@ -25,7 +24,6 @@ public class DeleteTestcaseModal {
     }
 
     public TestcasesPage delete() {
-        driver.findElement(CONFIRM_DELETE).click();
         driver.findElement(OK_BUTTON).click();
         return new TestcasesPage(driver);
     }

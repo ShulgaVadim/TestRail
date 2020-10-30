@@ -15,26 +15,17 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class TestcasesPage extends BasePage {
 
-    public static final String TESTCASE_URL = URL + "/index.php?/suites/view/63";
+    public static final By TESTCASES_BUTTON = By.id("navigation-cases-section");
     private static final By ADD_TESTCASE_BUTTON = By.id("sidebar-cases-add");
-    private static final By DELETE_TESTCASE_BUTTON = By.id("deleteCases");
+    private static final By EDIT_BUTTON = By.xpath("//span[contains(text(),'Edit')]");
     public static final By TESTCASES_XPATH = By.xpath("//table[@class='grid']//td[4]/a/span");
-    public static final By EDIT_BUTTON = By.cssSelector(".toolbar-button");
     String testcaseLocator = "//td//span[text()='%s']/ancestor::a";
-    String checkboxLocator = "//span[contains(text(),'%s')]/ancestor::tr//input";
+    String deleteTestCase = "//span[contains(text(),'%s')]/ancestor::td/following-sibling::td[2]";
     String textareaLocator = "//span[text()='%s']/parent::div/following-sibling::div//p";
-    List <WebElement> testCases;
+    List<WebElement> testCases;
 
     public TestcasesPage(WebDriver driver) {
         super(driver);
-    }
-
-    @Step("Open Test cases Page")
-    public TestcasesPage openPage() {
-        log.info("Opening Test cases page: " + TESTCASE_URL);
-        driver.get(TESTCASE_URL);
-        isPageOpened();
-        return this;
     }
 
     @Step("Validation that Test cases Page is opened")
@@ -44,7 +35,7 @@ public class TestcasesPage extends BasePage {
     }
 
     @Step("Click 'Add Test case' Button")
-    public AddTestcasePage clickAddTestcase(){
+    public AddTestcasePage clickAddTestcase() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_TESTCASE_BUTTON)).click();
         return new AddTestcasePage(driver);
     }
@@ -59,33 +50,13 @@ public class TestcasesPage extends BasePage {
         return isCreated;
     }
 
-    @Step("Check the checkbox")
-    public TestcasesPage checkTheCheckbox(String testCaseName){
-        driver.findElement(By.xpath(String.format(checkboxLocator, testCaseName))).click();
+    @Step("Click 'Test Cases' button")
+    public TestcasesPage clickTestCasesButton() {
+        driver.findElement(TESTCASES_BUTTON).click();
         return this;
     }
 
-    @Step("Click 'Delete Test Case' button")
-    public DeleteTestcaseModal clickDeleteTestcase(){
-        driver.findElement(DELETE_TESTCASE_BUTTON).click();
-        return new DeleteTestcaseModal(driver);
-    }
-
-    @Step("Validation that Test Case '{testCaseName}' is deleted")
-    public boolean isTestCaseDeleted(String testCaseName) {
-        boolean isDeleted = true;
-        testCases = driver.findElements(TESTCASES_XPATH);
-        log.info("Validate that Test Case " + testCaseName + "is deleted");
-        for (int i = 0; i < testCases.size(); i++) {
-            if (testCases.get(i).getText().equals(testCaseName)) {
-                isDeleted = false;
-            }
-        }
-        return isDeleted;
-    }
-
-
-    @Step ("Open Edit window for '{testCaseName}'")
+    @Step("Open Edit window for '{testCaseName}'")
     public TestcasesPage openEditing(String testCaseName) {
         driver.findElement(By.xpath(String.format(testcaseLocator, testCaseName))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(EDIT_BUTTON)).click();
@@ -93,7 +64,7 @@ public class TestcasesPage extends BasePage {
     }
 
     @Step("Get text from '{textarea}'")
-    public String getTextfromTextarea(String textarea){
+    public String getTextfromTextarea(String textarea) {
         log.info("Get text from " + textarea);
         return driver.findElement(By.xpath(String.format(textareaLocator, textarea))).getText();
     }
@@ -105,5 +76,26 @@ public class TestcasesPage extends BasePage {
         assertEquals(editTitle, editedTestCaseName);
         assertEquals(getTextfromTextarea("Expected Result"), editedExpectedResult);
         return this;
+    }
+
+    @Step("Open Delete window for '{testCaseName}'")
+    public DeleteTestcaseModal clickDelete(String testCaseName) {
+        driver.findElement(By.xpath(String.format(deleteTestCase, testCaseName))).click();
+        return new DeleteTestcaseModal(driver);
+    }
+
+    @Step("Validation that Test Case '{testCaseName}' is deleted")
+    public boolean isTestCaseDeleted(String testCaseName) {
+        log.info("Validate that Test Case " + testCaseName + "is deleted");
+        driver.navigate().refresh();
+        boolean isDeleted;
+        testCases = driver.findElements(TESTCASES_XPATH);
+
+        if (testCases.size() == 0) {
+            isDeleted = true;
+        } else {
+            isDeleted = false;
+        }
+        return isDeleted;
     }
 }

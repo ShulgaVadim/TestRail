@@ -20,7 +20,7 @@ public class ProjectSteps {
     }
 
     @Step("Create new project: '{projectName}'")
-    public ProjectSteps createNewProject(String projectName, String announcement){
+    public ProjectSteps createNewProject(String projectName, String announcement) {
         projectsPage
                 .openPage()
                 .isPageOpened()
@@ -32,16 +32,15 @@ public class ProjectSteps {
 
     @Step("Validation that Project '{projectName}' is created")
     public ProjectSteps isProjectCreated(String projectName) {
-        log.info("Validation that Project "  + projectName + " is created");
+        log.info("Validation that Project " + projectName + " is created");
         projectsPage
-                .openPage()
                 .isPageOpened();
         assertTrue(projectsPage.isProjectCreated(projectName));
         return this;
     }
 
     @Step("Delete project: '{projectName}'")
-    public ProjectSteps deleteProject(String projectName){
+    public ProjectSteps deleteProject(String projectName) {
         projectsPage
                 .openPage()
                 .isPageOpened()
@@ -53,11 +52,17 @@ public class ProjectSteps {
 
     @Step("Validation that Project '{projectName}' is deleted")
     public ProjectSteps isProjectDeleted(String projectName) {
-        log.info("Validation that Project "  + projectName + " is deleted");
+        log.info("Validation that Project " + projectName + " is deleted");
         projectsPage
-                .openPage()
                 .isPageOpened();
         assertTrue(projectsPage.isProjectDeleted(projectName));
+        return this;
+    }
+
+    @Step("Open Projects Page '{projectName}'")
+    public ProjectSteps openProject(String projectName) {
+        projectsPage
+                .openProject(projectName);
         return this;
     }
 }

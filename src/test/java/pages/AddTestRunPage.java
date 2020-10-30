@@ -28,7 +28,6 @@ public class AddTestRunPage extends BasePage {
     @Step("Create new Test Run")
     public AddTestRunPage createNewTestRun(TestRun testrun) {
         new Input(driver, "Name").write(testrun.getName());
-        new Select(driver, "Milestone").select(testrun.getMilestone());
         new Select(driver, "Assign To").select(testrun.getAssignTo());
         driver.findElement(By.id("refs")).clear();
         driver.findElement(By.id("refs")).sendKeys(testrun.getReferences());

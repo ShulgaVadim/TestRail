@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 @Log4j2
 public class NewProjectPage extends BasePage {
 
-    public static final String NEWPROJECT_URL = URL + "/index.php?/admin/projects/add";
     public static final By NAME = By.id("name");
     public static final By ANNOUNCEMENT = By.id("announcement");
     public static final By SINGLE_REP_RADIOBUTTON = By.id("suite_mode_single");
@@ -27,15 +26,7 @@ public class NewProjectPage extends BasePage {
         return this;
     }
 
-    @Step("Open NewProject Page")
-    public NewProjectPage openPage() {
-        log.info("Opening Dashboard page: " + NEWPROJECT_URL);
-        driver.get(NEWPROJECT_URL);
-        isPageOpened();
-        return this;
-    }
-
-    @Step("Click Add Project button")
+    @Step("Click 'Add Project' button")
     public NewProjectPage clickAddProjectButton() {
         driver.findElement(ADD_PROJECT_BUTTON).click();
         return this;
