@@ -76,7 +76,7 @@ public class ProjectsPage extends BasePage {
 
     @Step("Validation that project '{projectName}' is deleted")
     public boolean isProjectDeleted(String projectName) {
-        log.info("Validate that project " + projectName + "is deleted");
+        log.info("Validate that project " + projectName + " is deleted");
         boolean isDeleted = true;
         projects = driver.findElements(PROJECTS_XPATH);
         for (int i = 0; i < projects.size(); i++) {
