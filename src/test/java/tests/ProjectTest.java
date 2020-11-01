@@ -5,8 +5,8 @@ import tests.base.BaseTest;
 
 public class ProjectTest extends BaseTest {
 
-    String name = faker.leagueOfLegends().champion();
-    String announcement = faker.leagueOfLegends().location();
+    String name = faker.country().name();
+    String announcement = faker.country().capital();
 
     @Test
     public void createProjectTest() {
