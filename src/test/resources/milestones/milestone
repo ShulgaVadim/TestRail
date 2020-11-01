@@ -1,0 +1,10 @@
+{
+  "completed_on": 1389968184,
+  "description": "...",
+  "due_on": 1391968184,
+  "id": 1,
+  "is_completed": true,
+  "name": "Release 1.0",
+  "refs": "RF-1, RF-2",
+  "url": "http:///testrail/index.php?/milestones/view/1"
+}

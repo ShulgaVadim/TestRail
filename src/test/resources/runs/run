@@ -1,0 +1,6 @@
+{
+  "suite_id": 1,
+  "name": "This is a new test run",
+  "refs": "SAN-1, SAN-2",
+  "include_all": false
+}
