@@ -6,14 +6,14 @@ import tests.base.BaseTest;
 
 public class TestRunTest extends BaseTest {
 
-    String projectName = faker.country().name();
+    String projectName = faker.name().firstName();
     String announcement = faker.country().capital();
 
-    String name = faker.name().name();
+    String name = faker.name().firstName();
     String references = faker.artist().name();
     String description = faker.chuckNorris().fact();
 
-    String editedName = faker.name().username();
+    String editedName = faker.name().firstName();
     String editedReferences = faker.artist().name();
     String editedDescription = faker.chuckNorris().fact();
 

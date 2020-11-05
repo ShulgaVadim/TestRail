@@ -5,7 +5,7 @@ import tests.base.BaseTest;
 
 public class ProjectTest extends BaseTest {
 
-    String name = faker.country().name();
+    String name = faker.name().firstName();
     String announcement = faker.country().capital();
 
     @Test
