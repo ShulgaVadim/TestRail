@@ -4,10 +4,10 @@
     <test name="smoke test">
         <classes>
             <class name="tests.LoginTest"/>
-            <class name="tests.MilestoneTest"/>
             <class name="tests.ProjectTest"/>
             <class name="tests.TestCaseTest"/>
             <class name="tests.TestRunTest"/>
+            <class name="tests.MilestoneTest"/>
             <class name="tests.api.APITest"/>
         </classes>
     </test>
