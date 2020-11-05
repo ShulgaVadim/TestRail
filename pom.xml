@@ -119,12 +119,12 @@
             <scope>test</scope>
         </dependency>
 
-<!--        &lt;!&ndash;Для считывания yaml-файлов &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
-<!--            <artifactId>jackson-dataformat-yaml</artifactId>-->
-<!--            <version>${jackson-dataformat-yaml.version}</version>-->
-<!--        </dependency>-->
+        <!--Для считывания yaml-файлов -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson-dataformat-yaml.version}</version>
+        </dependency>
 
     </dependencies>
 </project>
