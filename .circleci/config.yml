@@ -22,16 +22,6 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      # run tests!
-#      - run: #STABLE
-#          name: Install Chromedriver latest version
-#          command: |
-#            sudo apt-get update
-#            sudo apt-get install lsb-release libappindicator3-1
-#            curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#            sudo dpkg -i google-chrome.deb
-#            sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
-#            rm google-chrome.deb
       - run:
           name: Get chrome version
           command: google-chrome --version
@@ -40,7 +30,7 @@ jobs:
           command: chmod 777 src/test/resources/webdrivers/linux/chromedriver
       - run:
           name: Running tests
-          command: mvn clean install -Dbla=bla -Dbla2=bla
+          command: mvn clean test -DsuiteXmlFile=src/test/resources/SmokeTest.xml
       - run:
           name: Generate allure report
           command: mvn allure:report

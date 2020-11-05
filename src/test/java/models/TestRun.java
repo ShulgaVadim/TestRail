@@ -1,3 +1,4 @@
+
 package models;
 
 import lombok.AllArgsConstructor;
@@ -15,4 +16,3 @@ public class TestRun {
     String assignTo;
     String description;
 }
-

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
-    public static final String URL = "https://aqa6shulga.testrail.io/";
+    public static final String URL = "https://tmsshulga.testrail.io/";
     WebDriver driver;
     WebDriverWait wait;
 

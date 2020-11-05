@@ -1,3 +1,4 @@
+
 package models;
 
 import lombok.AllArgsConstructor;
@@ -16,4 +17,3 @@ public class Milestone {
     String startDate;
     String endDate;
 }
-

@@ -1,0 +1,18 @@
+{
+  "title": "This is test case after updating",
+  "type_id": 1,
+  "priority_id": 2,
+  "estimate": "45m",
+  "refs": "RF-1, RF-2",
+
+  "custom_steps_separated": [
+    {
+      "content": "Step 1",
+      "expected": "Expected Result 1"
+    },
+    {
+      "content": "Step 2",
+      "expected": "Expected Result 2"
+    }
+  ]
+}
