@@ -18,8 +18,8 @@ public class MilestonesPage extends BasePage {
     public static final By EDIT = By.xpath("//a[contains(text(),'Edit')]");
     private static final By ADD_MILESTONE_BUTTON = By.id("sidebar-milestones-add");
     public static final By MILESTONES_XPATH = By.cssSelector(".summary-title");
-    String editMilestoneLocator = "//a[text()='%s']/parent::div//span//span[2]/following-sibling::a/div";
-    String milestoneNameLocator = "//div[@class='summary-title summary-title-compact text-ppp']/a[text()='%s']";
+    String editMilestoneLocator = "//a[text()='%s']/parent::div//span[2]/following-sibling::a";
+    String milestoneNameLocator = "//a[text()='%s']/parent::div/a";
     private static final By EXPECTED_NAME = By.cssSelector(".page_title");
     private static final By EXPECTED_DESCRIPTION = By.xpath ("//div[@class='markdown']");
     List<WebElement> milestones;
@@ -54,8 +54,8 @@ public class MilestonesPage extends BasePage {
     public AddMilestonePage clickEditMilestone(String milestoneName) {
         Actions builder = new Actions(driver);
         WebElement milestoneArea = driver.findElement(By.xpath(String.format(milestoneNameLocator, milestoneName)));
-        builder.moveToElement(milestoneArea).build().perform();
         WebElement editButton = driver.findElement(By.xpath(String.format(editMilestoneLocator, milestoneName)));
+        builder.moveToElement(milestoneArea).build().perform();
         editButton.click();
         return new AddMilestonePage(driver);
     }
