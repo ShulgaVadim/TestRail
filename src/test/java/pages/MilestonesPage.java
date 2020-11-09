@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -15,13 +14,12 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class MilestonesPage extends BasePage {
 
-    public static final By EDIT = By.xpath("//a[contains(text(),'Edit')]");
+    public static final By EDIT = By.cssSelector(".button-edit");
     private static final By ADD_MILESTONE_BUTTON = By.id("sidebar-milestones-add");
     public static final By MILESTONES_XPATH = By.cssSelector(".summary-title");
-    String editMilestoneLocator = "//a[text()='%s']/parent::div//span[2]/following-sibling::a";
     String milestoneNameLocator = "//a[text()='%s']/parent::div/a";
     private static final By EXPECTED_NAME = By.cssSelector(".page_title");
-    private static final By EXPECTED_DESCRIPTION = By.xpath ("//div[@class='markdown']");
+    private static final By EXPECTED_DESCRIPTION = By.xpath("//div[@class='markdown']");
     List<WebElement> milestones;
 
     public MilestonesPage(WebDriver driver) {
@@ -52,16 +50,13 @@ public class MilestonesPage extends BasePage {
 
     @Step("Click 'Edit Milestone' Button")
     public AddMilestonePage clickEditMilestone(String milestoneName) {
-        Actions builder = new Actions(driver);
-        WebElement milestoneArea = driver.findElement(By.xpath(String.format(milestoneNameLocator, milestoneName)));
-        WebElement editButton = driver.findElement(By.xpath(String.format(editMilestoneLocator, milestoneName)));
-        builder.moveToElement(milestoneArea).build().perform();
-        editButton.click();
+        driver.findElement(By.xpath(String.format(milestoneNameLocator, milestoneName))).click();
+        clickEdit();
         return new AddMilestonePage(driver);
     }
 
     @Step("Validation that Milestone'{editedMilestoneName}' is edited")
-    public MilestonesPage isMilestoneEdited(String editedMilestoneName, String editDescription)  {
+    public MilestonesPage isMilestoneEdited(String editedMilestoneName, String editDescription) {
         log.info("Validation that Milestone " + editedMilestoneName + "is edited");
         driver.findElement(By.xpath(String.format(milestoneNameLocator, editedMilestoneName))).click();
         String expectedName = driver.findElement(EXPECTED_NAME).getText();
