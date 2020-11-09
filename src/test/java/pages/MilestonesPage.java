@@ -58,7 +58,6 @@ public class MilestonesPage extends BasePage {
     @Step("Validation that Milestone'{editedMilestoneName}' is edited")
     public MilestonesPage isMilestoneEdited(String editedMilestoneName, String editDescription) {
         log.info("Validation that Milestone " + editedMilestoneName + "is edited");
-        driver.findElement(By.xpath(String.format(milestoneNameLocator, editedMilestoneName))).click();
         String expectedName = driver.findElement(EXPECTED_NAME).getText();
         String expectedDescription = driver.findElement(EXPECTED_DESCRIPTION).getText();
         assertEquals(editedMilestoneName, expectedName);
